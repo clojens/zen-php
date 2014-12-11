@@ -13,35 +13,43 @@ class Element {
 	
 	private $tabString = "    ";
 	
-	function __construct($tagName, $parent = null, $isEmptyTag = false) {
+    public function __construct($tagName, $parent = null, $isEmptyTag = false)
+    {
 		$this->tagName = $tagName;
 		$this->isEmptyTag = $isEmptyTag;
-		if ($parent instanceof Element)
-			$this->parent = $parent;
+		if ($parent instanceof Element) {
+            $this->parent = $parent;
+        }
 	}
 	
-	function addChild(Element $child) {
+    public function addChild(Element $child)
+    {
 		$this->children[] = $child;
 		$child->setParent($this);
 	}
 	
-	function getTabString($count) {
-		if ($count > 0)
-			return str_repeat($this->tabString, $count);
+    public function getTabString($count)
+    {
+		if ($count > 0) {
+            return str_repeat($this->tabString, $count);
+        }
 		return '';
 	}
 	
 	
-	function parse($tabCount = 0) {
+    public function parse($tabCount = 0)
+    {
 		$tabs    = $this->getTabString($tabCount);
 		$attrStr = $this->parseAttrs();
 		$lTag    =  '<' . $this->tagName . $attrStr;
+
 		if ($this->isEmptyTag) {
 			$lTag .= " />\n";
 			return $tabs . $lTag;
-		} else
+		} else {
 			$lTag .= ">";		
-		
+        }
+
 		$content = '';
 		if (!empty($this->children)) {
 			foreach ($this->children as $child) {
@@ -49,17 +57,20 @@ class Element {
 			}
 			$content .= $tabs;
 		}
-		if (!empty($content))
-			$lTag .= "\n";
+		if (!empty($content)) {
+            $lTag .= "\n";
+        }
 		
 		$rTag = '</' . $this->tagName . '>';
 		
 		return $tabs . $lTag . $content . $rTag . "\n";
 	}	
 	
-	protected function parseAttrs() {
-		if (empty($this->attrs))
-			return '';
+    protected function parseAttrs()
+    {
+		if (empty($this->attrs)) {
+            return '';
+        }
 		$attrs = array();
 		foreach ( $this->attrs as $attr => $value ) {
 			$attrs[] = $attr . '="' . $value . '"';
@@ -67,11 +78,13 @@ class Element {
 		return ' ' . implode(' ', $attrs);
 	}
 	
-	function attr($name, $value) {
+    public function attr($name, $value)
+    {
 		$this->attrs[$name] = $value;
 	}
 	
-	public function getTagName() {
+    public function getTagName()
+    {
 		return $this->tagName;
 	}
 

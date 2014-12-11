@@ -5,9 +5,9 @@ namespace ZenPHP;
 
 class RootElement extends Element {
 	
-	function __construct(){}
+	public function __construct(){}
 	
-	function parse($tabCount = 0) {
+	public function parse($tabCount = 0) {
 		$content = '';
 		foreach ($this->getChildren() as $child) {
 			$content .= $child->parse($tabCount);
