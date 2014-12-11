@@ -1,7 +1,8 @@
 <?php
 namespace ZenPHP;
 
-require_once(dirname(__FILE__) . '/Element.php');
+//require_once(dirname(__FILE__) . '/Element.php');
+
 class TextElement extends Element {
 	
 	private $content;
