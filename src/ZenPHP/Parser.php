@@ -2,8 +2,8 @@
 
 namespace ZenPHP;
 
-require_once(dirname(__FILE__) . '/RootElement.php');
-require_once(dirname(__FILE__) . '/TextElement.php');
+//require_once(dirname(__FILE__) . '/RootElement.php');
+//require_once(dirname(__FILE__) . '/TextElement.php');
 
 class ZenPHP {
 	
