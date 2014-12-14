@@ -62,7 +62,7 @@ class ZenPHP {
 			return new TextElement(self::replaceVars($content[1], $data));
 		} 
 		
-		if (preg_match_all('/([a-z0-9]+)(#[^\.\[\{]+)?(\.[^\[\{]+)?(\[.+\])?(?:\{(.+)\})?/is', $seletor, $matches, PREG_SET_ORDER)) {
+		if (preg_match_all('/([a-z0-9_-]+)(#[^\.\[\{]+)?(\.[^\[\{]+)?(\[.+\])?(?:\{(.+)\})?/is', $seletor, $matches, PREG_SET_ORDER)) {
 			/*
 			 * 1 - tagName
 			 * 2 - id
